@@ -165,13 +165,29 @@ h6 {
 }
 
 .location-badge {
-    margin: 20px auto 30px auto;
-    padding: 15px;
-    border: 1px solid var(--logo-mid);
-    display: block;
+    margin: 15px auto 35px auto;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: fit-content;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.3);
+    background: transparent;
+}
+
+.location-badge i {
+    color: var(--logo-mid);
+    font-size: 1.8rem;
+    /* Slightly larger icon */
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+
+.location-badge p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    font-weight: 500;
+    text-align: left;
 }
 
 /* Services Grid */
@@ -210,7 +226,8 @@ h6 {
 }
 
 /* Pelvic Health Box */
-.pelvic-health-box {
+/* Feature Box (Shared Style) */
+.feature-box {
     margin-top: 50px;
     background: var(--theme-dark-blue);
     color: white;
@@ -219,17 +236,17 @@ h6 {
     text-align: center;
 }
 
-.pelvic-health-box h3 {
+.feature-box h3 {
     color: white;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.pelvic-health-box i {
+.feature-box i {
     margin-right: 10px;
 }
 
-.pelvic-list {
+.feature-list {
     list-style: none;
     padding: 0;
     display: flex;
@@ -239,10 +256,13 @@ h6 {
     margin-top: 20px;
 }
 
-.pelvic-list li {
+.feature-list li {
     background: rgba(255, 255, 255, 0.1);
     padding: 8px 16px;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Staff Profile */
