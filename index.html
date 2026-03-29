@@ -356,6 +356,39 @@
                 }
             });
         });
+
+        // --- NEW ANIMATIONS AND INTERACTIVITY ---
+
+        // 1. Sticky Navbar Glassmorphism
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Auto-add reveal class to major sections
+        document.querySelectorAll('.mission .container, .section-title, .services-grid, .staff-card, .faq-category, .booking-container').forEach(el => {
+            el.classList.add('reveal');
+        });
+
+        // 3. Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Trigger threshold
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load to reveal above-the-fold content immediately
+        reveal();
     </script>
 </body>
 
