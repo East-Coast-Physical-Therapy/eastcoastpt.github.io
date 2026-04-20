@@ -2,12 +2,12 @@
    1. Root Variables & Theme Configuration
    ========================================= */
 :root {
-    --dark-azure: #06284D;
-    --theme-dark-blue: #081C2E;
+    --dark-azure: #0A2540;
+    --theme-dark-blue: #061726;
     --theme-text-white: #ffffff;
-    --logo-mid: #3884c3;
-    --light-gray: #f4f4f4;
-    --accent-blue: #eef7ff;
+    --logo-mid: #2D7DD2;
+    --light-gray: #F4F7F9;
+    --accent-blue: #E8F4FF;
 }
 
 /* =========================================
@@ -155,48 +155,54 @@ h6 {
    5. Hero Section
    ========================================= */
 .hero {
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('assets/gym-bg.jpg');
+    background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(6, 23, 38, 0.85)), url('assets/clinic.jpeg');
     height: auto;
-    min-height: 70vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--theme-dark-blue);
+    color: var(--theme-text-white);
     text-align: center;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
 }
 
 .hero-content {
     padding: 20px;
     max-width: 900px;
+    margin-top: 50px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     line-height: 1.2;
     margin-bottom: 20px;
-    color: var(--theme-dark-blue);
+    color: var(--theme-text-white);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .hero .slogan {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     max-width: 700px;
     margin: 0 auto 30px auto;
-    opacity: 0.9;
+    opacity: 0.95;
+    font-weight: 300;
 }
 
-/* Location Badge */
+/* Location Badge - Glassmorphism */
 .location-badge {
-    margin: 15px auto 35px auto;
-    padding: 0;
-    border: none;
+    margin: 25px auto 40px auto;
+    padding: 15px 30px;
+    border-radius: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: fit-content;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .location-badge i {
@@ -211,6 +217,7 @@ h6 {
     line-height: 1.4;
     font-weight: 500;
     text-align: left;
+    color: var(--theme-text-white);
 }
 
 /* =========================================
@@ -225,47 +232,98 @@ h6 {
 
 .service-card {
     background: white;
-    padding: 30px;
     text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s ease;
-    border-bottom: 4px solid var(--theme-dark-blue);
-    color: #444; /* Dark gray for readability */
-}
-
-.service-card p {
-    margin-top: 15px;
-    line-height: 1.5;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #444; 
+    overflow: hidden;
+    position: relative;
+    border: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-    border-color: var(--logo-mid);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.service-card h3 {
-    margin-bottom: 0;
+.service-img-wrapper {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    image-rendering: high-quality;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.service-img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(6, 23, 38, 0.8) 0%, transparent 60%);
+}
+
+.service-img-wrapper.no-img {
+    background: linear-gradient(135deg, var(--theme-dark-blue), var(--logo-mid));
+}
+
+.service-icon {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--logo-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+    border: 4px solid white;
+    transition: all 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: translateX(-50%) scale(1.15);
+    background: var(--theme-dark-blue);
+}
+
+.service-icon i {
+    font-size: 1.2rem;
+    margin: 0;
+    color: white;
+}
+
+.service-content {
+    padding: 40px 20px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
     color: var(--theme-dark-blue);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
-.service-card:hover h3 {
+.service-card:hover .service-content h3 {
     color: var(--logo-mid);
 }
 
-.service-card i {
-    font-size: 2rem;
-    color: var(--logo-mid);
-    margin-bottom: 15px;
-    display: block;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.service-card:hover i {
-    transform: scale(1.2);
+.service-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #555;
 }
 
 /* Feature Box (Shared Style for Services & Pelvic Health) */
@@ -316,29 +374,38 @@ h6 {
     margin-bottom: 60px;
     align-items: center;
     background: white;
-    padding: 0;
-    border-radius: 12px;
+    padding: 35px;
+    border-radius: 16px;
     color: var(--theme-dark-blue);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 .staff-card.reverse {
     flex-direction: row-reverse;
 }
 
-.staff-img-placeholder {
-    width: 300px;
-    height: 350px;
-    background: var(--light-gray);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.staff-img-wrapper {
+    width: 320px;
+    height: 380px;
     border-radius: 12px;
+    overflow: hidden;
     flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.staff-headshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    image-rendering: high-quality;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .staff-info {
-    padding: 0 40px;
+    padding: 0;
+    flex: 1;
 }
 
 .staff-info h3 {
@@ -361,19 +428,27 @@ h6 {
 }
 
 .contact-info {
-    flex: 1;
+    flex: 0.8;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+    text-align: center;
 }
 
 .contact-info h3 {
     margin-bottom: 20px;
     color: var(--theme-dark-blue);
+    font-size: 1.8rem;
 }
 
 .contact-info p {
     margin-bottom: 15px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     font-size: 1.1rem;
     color: var(--theme-dark-blue);
@@ -385,8 +460,23 @@ h6 {
 }
 
 .booking-cta {
-    flex: 1.5;
-    padding-left: 20px;
+    flex: 1.2;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.booking-cta p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 /* Override Secondary Button inside Light Booking Card */
@@ -406,13 +496,14 @@ h6 {
 .btn-primary,
 .btn-secondary {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 15px 30px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    margin: 10px 10px 0 0;
+    margin: 0;
     transition: all 0.3s ease;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-primary {
@@ -492,6 +583,7 @@ h6 {
         flex-direction: column;
         text-align: center;
         gap: 20px;
+        padding: 30px 20px;
     }
 
     .staff-img-placeholder {
